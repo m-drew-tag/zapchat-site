@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zapchat — Privacy</title>
+<style>
+:root{color-scheme:light dark}
+body{font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+max-width:44rem;margin:0 auto;padding:3rem 1.25rem;color:#1a1a1a;background:#fff}
+@media(prefers-color-scheme:dark){body{color:#e8e8e8;background:#111}a{color:#4ea}}
+h1{font-size:1.75rem;margin:0 0 .25rem}.sub{color:#666;margin:0 0 2.5rem}
+h2{font-size:1.1rem;margin:2rem 0 .5rem}
+a{color:#0a7c5a}nav{margin-top:3rem;padding-top:1.5rem;border-top:1px solid #8883;font-size:.925rem}
+strong{font-weight:600}
+</style></head><body>
+<h1>Privacy Policy</h1>
+<p class="sub">Zapchat, by Technology Awareness Group (TAG). Last updated 6 August 2026.</p>
+
+<p>This describes what Zapchat actually does with your data. It is written to be
+accurate rather than reassuring; where something may surprise you, it is stated
+plainly.</p>
+
+<h2>The short version</h2>
+<p>Zapchat links to your existing WhatsApp account as a companion device. To do that,
+your messages pass through a relay server operated by TAG. <strong>Message content is
+decrypted on that server</strong> — this is unavoidable for any companion client that
+is not WhatsApp's own. Content is held in memory only, is not written to disk, and is
+not used for advertising, profiling, or training anything.</p>
+
+<h2>What passes through TAG's server</h2>
+<ul>
+<li><strong>Message content</strong> — text, photos, videos, voice notes, documents,
+locations and contact cards, in both directions. Held in memory, capped in size and
+age, and lost whenever the service restarts. Not written to disk.</li>
+<li><strong>Call audio</strong> — voice calls are carried through the relay. Calls are
+<strong>not recorded</strong>.</li>
+<li><strong>Your WhatsApp session credentials</strong> — stored on the server so the
+link survives restarts. This is what lets Zapchat act as your companion device.</li>
+<li><strong>Contact identifiers</strong> — phone numbers and WhatsApp identifiers of
+people you exchange messages with, so conversations can be named and routed.</li>
+</ul>
+
+<h2>Notifications</h2>
+<p>When a message arrives, only a <strong>message identifier and a timestamp</strong>
+are sent to Apple's push service. No message text, no sender name, no phone number.
+The text you see in a notification is fetched by your own device, directly, after it
+wakes.</p>
+
+<h2>What we do not do</h2>
+<ul>
+<li>No advertising, and no sale or sharing of your data with advertisers.</li>
+<li>No analytics SDKs, no third-party trackers, no crash reporters that carry content.</li>
+<li>No message content in server logs. Logs record counts, timings and opaque
+identifiers only.</li>
+<li>No use of your messages to train machine-learning models.</li>
+</ul>
+
+<h2>Retention and deletion</h2>
+<p>Message content lives in memory and is discarded continuously — by age, by volume,
+and whenever the service restarts. Your session credentials persist until you unlink
+Zapchat, either from WhatsApp's Linked Devices screen on your phone or by asking us to
+delete your session. Unlinking ends TAG's access; deleting the session removes the
+stored credentials.</p>
+
+<h2>Other people</h2>
+<p>Messages you receive were written by other people who did not choose Zapchat. Their
+content passes through the same relay under the same terms described here.</p>
+
+<h2>Children</h2>
+<p>Zapchat is not directed at children and requires an existing WhatsApp account, which
+WhatsApp itself age-restricts.</p>
+
+<h2>Not affiliated with WhatsApp</h2>
+<p>Zapchat is an independent client. It is not made by, endorsed by, or affiliated with
+WhatsApp LLC or Meta. Your use of WhatsApp remains governed by WhatsApp's own terms and
+privacy policy.</p>
+
+<h2>Contact</h2>
+<p>Questions, or to have your session deleted:
+<a href="mailto:support@tag.org">support@tag.org</a>.</p>
+
+<nav><a href="index.html">Zapchat</a> &nbsp;·&nbsp; <a href="support.html">Support</a></nav>
+</body></html>
