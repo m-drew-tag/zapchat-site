@@ -23,14 +23,19 @@ plainly.</p>
 <p>Zapchat links to your existing WhatsApp account as a companion device. To do that,
 your messages pass through a relay server operated by TAG. <strong>Message content is
 decrypted on that server</strong> — this is unavoidable for any companion client that
-is not WhatsApp's own. Content is held in memory only, is not written to disk, and is
-not used for advertising, profiling, or training anything.</p>
+is not WhatsApp's own. Content is queued on that server only until your device has it:
+<strong>at most 12 hours once delivered, and at most 7 days if your device has not
+come to collect it</strong>. It is never used for advertising, profiling, or training
+anything.</p>
 
 <h2>What passes through TAG's server</h2>
 <ul>
 <li><strong>Message content</strong> — text, photos, videos, voice notes, documents,
-locations and contact cards, in both directions. Held in memory, capped in size and
-age, and lost whenever the service restarts. Not written to disk.</li>
+locations and contact cards, in both directions. Held in a queue that is capped in
+size and age and written to disk, so that a restart or a deploy does not cost you
+messages your phone had not collected yet. Deleted <strong>12 hours</strong> after
+your device confirms it has a message, and <strong>7 days</strong> at the very most
+if it never does.</li>
 <li><strong>Call audio</strong> — voice calls are carried through the relay. Calls are
 <strong>not recorded</strong>.</li>
 <li><strong>Your WhatsApp session credentials</strong> — stored on the server so the
@@ -55,8 +60,11 @@ identifiers only.</li>
 </ul>
 
 <h2>Retention and deletion</h2>
-<p>Message content lives in memory and is discarded continuously — by age, by volume,
-and whenever the service restarts. Your session credentials persist until you unlink
+<p>Message content is discarded continuously — by age, by volume, and as soon as your
+device has collected it. The outside bound is <strong>12 hours</strong> for anything
+your device has confirmed receiving, and <strong>7 days</strong> for anything it has
+not. Those two limits are the whole answer to how long TAG can hold your content, and
+a restart does not extend either one. Your session credentials persist until you unlink
 Zapchat, either from WhatsApp's Linked Devices screen on your phone or by asking us to
 delete your session. Unlinking ends TAG's access; deleting the session removes the
 stored credentials.</p>
