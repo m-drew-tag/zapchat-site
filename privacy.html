@@ -45,10 +45,17 @@ people you exchange messages with, so conversations can be named and routed.</li
 </ul>
 
 <h2>Notifications</h2>
-<p>When a message arrives, only a <strong>message identifier and a timestamp</strong>
-are sent to Apple's push service. No message text, no sender name, no phone number.
-The text you see in a notification is fetched by your own device, directly, after it
-wakes.</p>
+<p>When a message arrives, the notification carries <strong>the sender's name and the
+message text</strong> so that you can read it without opening the app. That means both
+pass through Apple's push service on the way to your device. Phone numbers and
+WhatsApp identifiers do not.</p>
+<p>This changed in August 2026. Notifications used to carry only an identifier, and
+your device fetched the text itself — which is better for privacy and only works when
+iOS lets the app run. On a phone with Background App Refresh off, or in Low Power
+Mode, it did not, and the notification said nothing but &ldquo;New message&rdquo;. We
+chose the notification you can read.</p>
+<p>A muted or archived chat is the exception: its notification carries no text at all,
+because it is not meant to interrupt you.</p>
 
 <h2>What we do not do</h2>
 <ul>
