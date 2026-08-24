@@ -1,0 +1,139 @@
+/* Zapchat. The palette is the app's own: the green is the exact fill from the
+   app icon (#25D366) and the dark ground is the icon's dark specialization
+   (#111B21). Nothing here is invented — a product site that does not look like
+   the product it sells is a second registry of the brand. */
+
+:root {
+  color-scheme: light dark;
+
+  --green: #25d366;
+  --link: #0a7c5a;          /* the green, darkened until it passes on white */
+  --ground: #ffffff;
+  --surface: #f4f7f5;       /* neutral, biased a few degrees toward the green */
+  --line: #e2e8e4;
+  --ink: #0e1512;
+  --muted: #5d6c65;
+  --shadow: 0 1px 2px rgba(14,21,18,.05), 0 8px 24px rgba(14,21,18,.06);
+}
+
+/* Only the tokens change. Every rule below reads them, so a colour is never
+   defined solely inside a media query — that is how a page ends up rendering
+   one theme's text on the other theme's ground. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --link: #4ee39a;
+    --ground: #111b21;
+    --surface: #1a262d;
+    --line: #26343c;
+    --ink: #e9edeb;
+    --muted: #93a5ad;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --link: #4ee39a;
+  --ground: #111b21;
+  --surface: #1a262d;
+  --line: #26343c;
+  --ink: #e9edeb;
+  --muted: #93a5ad;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 3.5rem 1.25rem 4rem;
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--ground);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* One column for prose. The screenshot rail below breaks out of it on purpose. */
+.wrap { max-width: 44rem; margin: 0 auto; }
+
+h1 { font-size: clamp(2.1rem, 7vw, 2.9rem); line-height: 1.1; letter-spacing: -.03em;
+     margin: 0 0 .4rem; text-wrap: balance; }
+h2 { font-size: 1.2rem; letter-spacing: -.01em; margin: 3rem 0 .6rem; text-wrap: balance; }
+h3 { font-size: 1rem; margin: 1.75rem 0 .35rem; }
+p  { margin: 0 0 1rem; }
+.sub { color: var(--muted); font-size: 1.12rem; margin: 0 0 1.75rem; text-wrap: balance; }
+.lede { font-size: 1.06rem; }
+a { color: var(--link); text-underline-offset: .18em; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 4px; }
+strong { font-weight: 600; }
+
+/* Header */
+.mark { width: 76px; height: 76px; border-radius: 22%; display: block; margin: 0 0 1.1rem; }
+
+/* Screenshots. Full-bleed and scrollable so a phone never has to shrink four
+   portrait screens into a row it cannot read. */
+.shots {
+  display: flex; gap: 1rem; overflow-x: auto;
+  /* Full-bleed so a narrow screen can scroll the row edge to edge, but
+     centred whenever the four fit — "safe" so centring never pushes the first
+     one out of reach on the left, which is what plain centre does. */
+  margin: 2rem calc(50% - 50vw) 0;
+  padding: .5rem 1.25rem 1.25rem;
+  justify-content: safe center;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.shots figure { margin: 0; flex: 0 0 auto; width: 216px; scroll-snap-align: center; }
+.shots img {
+  width: 100%; height: auto; display: block; border-radius: 22px;
+  border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--surface);
+}
+.shots figcaption { color: var(--muted); font-size: .85rem; margin-top: .6rem; text-align: center; }
+
+/* An aside under a block, not a section subtitle. */
+.note { color: var(--muted); font-size: .95rem; margin: .25rem 0 0; }
+
+/* Steps. Numbered because this IS a sequence — do them out of order and the
+   code has expired before you reach WhatsApp. */
+ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+ol.steps li {
+  counter-increment: step; position: relative; padding: 0 0 1.1rem 2.6rem;
+}
+ol.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: .05rem;
+  width: 1.7rem; height: 1.7rem; border-radius: 50%;
+  background: var(--green); color: #062b16;
+  font-size: .85rem; font-weight: 700; display: grid; place-items: center;
+}
+ol.steps b { font-weight: 600; }
+
+/* Two short lists side by side where there is room. */
+.pair { display: grid; gap: 1.25rem 2.5rem; grid-template-columns: 1fr; }
+@media (min-width: 34rem) { .pair { grid-template-columns: 1fr 1fr; } }
+.pair h3 { margin-top: 0; }
+.pair p { color: var(--muted); margin: 0; }
+
+/* FAQ */
+details {
+  border-top: 1px solid var(--line); padding: .9rem 0;
+}
+details:last-of-type { border-bottom: 1px solid var(--line); }
+summary {
+  cursor: pointer; font-weight: 600; list-style: none; display: flex;
+  justify-content: space-between; align-items: center; gap: 1rem;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "+"; color: var(--muted); font-weight: 400; font-size: 1.3rem; line-height: 1;
+}
+details[open] summary::after { content: "\2212"; }
+details p { margin: .7rem 0 .2rem; color: var(--muted); }
+details p:last-child { margin-bottom: 0; }
+
+/* Footer */
+nav { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+      font-size: .93rem; }
+.fine { font-size: .82rem; color: var(--muted); margin-top: 1.5rem; }
+.fine a { color: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
