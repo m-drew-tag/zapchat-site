@@ -1,19 +1,27 @@
-/* Zapchat. The palette is the app's own: the green is the exact fill from the
-   app icon (#25D366) and the dark ground is the icon's dark specialization
-   (#111B21). Nothing here is invented — a product site that does not look like
-   the product it sells is a second registry of the brand. */
+/* Zapchat. The palette is the app's own — a product site that does not look
+   like the product it sells is a second registry of the brand.
+
+   It used to be #25D366 on a #111B21 ground, taken from the app icon. Both of
+   those values are WhatsApp's: the first is their brand green exactly, the
+   second their dark theme. Apple rejected the app under guideline 4.1(b) for
+   it, the icon was rebuilt in TAG's own colours, and the site follows the same
+   move. It is now TAG's blue from tag.org (#04A5E0) over neutral greys taken
+   from the icon's mark (#2E3134).
+
+   Every value below is measured against its own ground rather than picked by
+   eye; the ratios are in the comments. */
 
 :root {
   color-scheme: light dark;
 
-  --green: #25d366;
-  --link: #0a7c5a;          /* the green, darkened until it passes on white */
+  --brand: #04a5e0;         /* TAG's blue, from tag.org */
+  --link: #037fac;          /* the blue, darkened until it passes on white — 4.5:1 */
   --ground: #ffffff;
-  --surface: #f4f7f5;       /* neutral, biased a few degrees toward the green */
-  --line: #e2e8e4;
-  --ink: #0e1512;
-  --muted: #5d6c65;
-  --shadow: 0 1px 2px rgba(14,21,18,.05), 0 8px 24px rgba(14,21,18,.06);
+  --surface: #f3f7fa;       /* neutral, biased a few degrees toward the blue */
+  --line: #e1e8ed;
+  --ink: #0e1416;           /* 18.6:1 on white */
+  --muted: #5d6a70;         /* 5.6:1 on white */
+  --shadow: 0 1px 2px rgba(14,20,22,.05), 0 8px 24px rgba(14,20,22,.06);
 }
 
 /* Only the tokens change. Every rule below reads them, so a colour is never
@@ -21,22 +29,22 @@
    one theme's text on the other theme's ground. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --link: #4ee39a;
-    --ground: #111b21;
-    --surface: #1a262d;
-    --line: #26343c;
-    --ink: #e9edeb;
-    --muted: #93a5ad;
+    --link: #04a7e2;      /* 6.4:1 on the ground below */
+    --ground: #16191c;
+    --surface: #202427;
+    --line: #2e3134;      /* the icon's mark colour, used as the rule */
+    --ink: #e8eaec;       /* 14.6:1 */
+    --muted: #9aa4ab;     /* 7.0:1 */
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
   }
 }
 :root[data-theme="dark"] {
-  --link: #4ee39a;
-  --ground: #111b21;
-  --surface: #1a262d;
-  --line: #26343c;
-  --ink: #e9edeb;
-  --muted: #93a5ad;
+  --link: #04a7e2;
+  --ground: #16191c;
+  --surface: #202427;
+  --line: #2e3134;
+  --ink: #e8eaec;
+  --muted: #9aa4ab;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
 }
 
@@ -62,7 +70,7 @@ p  { margin: 0 0 1rem; }
 .sub { color: var(--muted); font-size: 1.12rem; margin: 0 0 1.75rem; text-wrap: balance; }
 .lede { font-size: 1.06rem; }
 a { color: var(--link); text-underline-offset: .18em; }
-a:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
 strong { font-weight: 600; }
 
 /* Header */
@@ -94,7 +102,7 @@ strong { font-weight: 600; }
 .callout {
   margin: 1.25rem 0 0;
   padding: .9rem 1.1rem;
-  border-left: 3px solid var(--green);
+  border-left: 3px solid var(--brand);
   background: var(--surface);
   border-radius: 0 10px 10px 0;
   font-size: .97rem;
@@ -113,7 +121,7 @@ ol.steps li {
 ol.steps li::before {
   content: counter(step); position: absolute; left: 0; top: .05rem;
   width: 1.7rem; height: 1.7rem; border-radius: 50%;
-  background: var(--green); color: #062b16;
+  background: var(--brand); color: #00131c;   /* 6.7:1 on the blue */
   font-size: .85rem; font-weight: 700; display: grid; place-items: center;
 }
 ol.steps b { font-weight: 600; }
