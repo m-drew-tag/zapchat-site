@@ -88,6 +88,19 @@ strong { font-weight: 600; }
 }
 .shots figcaption { color: var(--muted); font-size: .85rem; margin-top: .6rem; text-align: center; }
 
+/* The one thing on this page somebody has to remember two weeks from now. It
+   is not a warning and it is not decoration — it is a step whose consequence
+   arrives late, so it gets the accent and its own edge. */
+.callout {
+  margin: 1.25rem 0 0;
+  padding: .9rem 1.1rem;
+  border-left: 3px solid var(--green);
+  background: var(--surface);
+  border-radius: 0 10px 10px 0;
+  font-size: .97rem;
+}
+.callout b { font-weight: 600; }
+
 /* An aside under a block, not a section subtitle. */
 .note { color: var(--muted); font-size: .95rem; margin: .25rem 0 0; }
 
