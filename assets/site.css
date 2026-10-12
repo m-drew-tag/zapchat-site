@@ -22,6 +22,9 @@
   --ink: #0e1416;           /* 18.6:1 on white */
   --muted: #5d6a70;         /* 5.6:1 on white */
   --shadow: 0 1px 2px rgba(14,20,22,.05), 0 8px 24px rgba(14,20,22,.06);
+  --warn: #b45309;          /* amber, 5.0:1 on white — the one step with a late consequence */
+  --warn-bg: #fff7ed;
+  --hero: #e6f6fc;          /* the brand blue, washed out, behind the title */
 }
 
 /* Only the tokens change. Every rule below reads them, so a colour is never
@@ -36,6 +39,9 @@
     --ink: #e8eaec;       /* 14.6:1 */
     --muted: #9aa4ab;     /* 7.0:1 */
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    --warn: #fbbf24;      /* 9.9:1 on the ground */
+    --warn-bg: #2a2214;
+    --hero: #12242c;
   }
 }
 :root[data-theme="dark"] {
@@ -46,13 +52,16 @@
   --ink: #e8eaec;
   --muted: #9aa4ab;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+  --warn: #fbbf24;
+  --warn-bg: #2a2214;
+  --hero: #12242c;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 3.5rem 1.25rem 4rem;
+  padding: 0;
   font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--ink);
   background: var(--ground);
@@ -178,3 +187,42 @@ nav { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line)
    pill's shape so the ring does not cut its corners. */
 .get:focus-visible { border-radius: 999px; }
 .get svg { width: 1.15em; height: 1.15em; fill: currentColor; }
+
+
+/* Layout bands. Each section sits on its own ground so the page reads as
+   parts rather than one long column, and the gutter lives here now that the
+   body no longer carries it. */
+.hero { background: linear-gradient(180deg, var(--hero), var(--ground)); padding: 4rem 1.25rem 1rem; }
+.band { padding: 1rem 1.25rem; }
+.band.alt { background: var(--surface); padding: 2.25rem 1.25rem 2.5rem; margin-top: 2rem; }
+.band.foot { padding-bottom: 4rem; }
+.band .wrap > h2:first-child { margin-top: 2rem; }
+.band.alt .wrap > h2:first-child { margin-top: 0; }
+
+/* The hero. The mark and the name are the first thing read, so they are larger
+   than the page's own type scale, and the tagline is a line, not a caption. */
+.hero .mark { width: 96px; height: 96px; margin-bottom: 1.3rem; box-shadow: var(--shadow); }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 3.6rem); margin-bottom: .55rem; }
+.hero .sub { font-size: clamp(1.2rem, 4vw, 1.5rem); color: var(--ink); margin-bottom: 1.5rem; }
+.hero .lede { color: var(--muted); }
+
+/* The two-weeks notice: the only step whose consequence arrives days later, so
+   it takes a warning colour instead of the brand accent. */
+.callout { border-left-color: var(--warn); background: var(--warn-bg); }
+.band.alt details { border-color: var(--line); }
+
+/* Interaction details */
+html { -webkit-tap-highlight-color: transparent; }
+a { transition: color .15s; }
+a:hover { text-decoration-thickness: 2px; }
+.get { transition: filter .15s, transform .1s; }
+.get:active { transform: translateY(1px); filter: brightness(.96); }
+.get:focus-visible { outline-offset: 4px; }
+summary { padding: .1rem 0; border-radius: 4px; }
+summary:hover::after { color: var(--ink); }
+.shots figure { transition: transform .2s; }
+@media (hover: hover) { .shots figure:hover { transform: translateY(-3px); } }
+
+/* Pages with no bands (support, privacy, source) put their column straight in
+   the body, which no longer carries a gutter of its own. */
+body > .wrap { padding: 3.5rem 1.25rem 4rem; }
