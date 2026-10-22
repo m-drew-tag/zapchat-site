@@ -7,94 +7,176 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#04a5e0">
 <link rel="canonical" href="https://zapchat.tag.org/privacy">
-<meta name="description" content="What Zapchat's relay holds, for how long, and what it never stores. Message content is kept only until your phone has it, and at most a week.">
+<meta name="description" content="What Zapchat's relay holds, for how long, who else handles it, and your rights. Message content is kept only until your phone has it, and at most a week.">
 <meta property="og:title" content="Zapchat — Privacy">
-<meta property="og:description" content="What Zapchat's relay holds, for how long, and what it never stores. Message content is kept only until your phone has it, and at most a week.">
+<meta property="og:description" content="What Zapchat's relay holds, for how long, who else handles it, and your rights. Message content is kept only until your phone has it, and at most a week.">
 <meta property="og:image" content="https://zapchat.tag.org/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="/assets/site.css">
 </head><body>
 <div class="wrap">
 <h1>Privacy Policy</h1>
-<p class="sub">Zapchat, by Technology Awareness Group (TAG). Last updated 6 August 2026.</p>
+<p class="sub">Zapchat, by Technology Awareness Group (TAG). Effective 22 October 2026.</p>
 
 <p>This describes what Zapchat actually does with your data. It is written to be
 accurate rather than reassuring; where something may surprise you, it is stated
 plainly.</p>
 
+<h2>Who is responsible</h2>
+<p>Zapchat is operated by [CONTROLLER: legal name of the TAG entity, registration
+number, postal address], which decides how your data is processed (the
+&ldquo;controller&rdquo;). Privacy questions and requests:
+<a href="mailto:support@tag.org">support@tag.org</a>.
+[EU representative: name and address.] [UK representative, if required: name and
+address.]</p>
+
 <h2>The short version</h2>
 <p>Zapchat links to your existing WhatsApp account as a companion device. To do that,
-your messages pass through a relay server operated by TAG. <strong>Message content is
-decrypted on that server</strong> — this is unavoidable for any companion client that
-is not WhatsApp's own. Content is queued on that server only until your device has it:
-<strong>at most 12 hours once delivered, and at most 7 days if your device has not
-come to collect it</strong>. It is never used for advertising, profiling, or training
-anything.</p>
+your messages pass through a relay server operated by TAG in the United States.
+<strong>Message content is decrypted on that server</strong> — this is unavoidable for
+any companion client that is not WhatsApp's own. Content is queued on that server only
+until your device has it: <strong>at most 12 hours once delivered, and at most 7 days if
+your device has not come to collect it</strong>. It is never used for advertising,
+profiling, or training anything, and it is never sold.</p>
 
-<h2>What passes through TAG's server</h2>
+<h2>What TAG's server handles</h2>
 <ul>
 <li><strong>Message content</strong> — text, photos, videos, voice notes, documents,
-locations and contact cards, in both directions. Held in a queue that is capped in
-size and age and written to disk, so that a restart or a deploy does not cost you
-messages your phone had not collected yet. Deleted <strong>12 hours</strong> after
-your device confirms it has a message, and <strong>7 days</strong> at the very most
-if it never does.</li>
-<li><strong>Call audio</strong> — voice calls are carried through the relay. Calls are
-<strong>not recorded</strong>.</li>
-<li><strong>Your WhatsApp session credentials</strong> — stored on the server so the
-link survives restarts. This is what lets Zapchat act as your companion device.</li>
-<li><strong>Contact identifiers</strong> — phone numbers and WhatsApp identifiers of
-people you exchange messages with, so conversations can be named and routed.</li>
+locations, contact cards and polls, in both directions, with the sender's name and
+number. Held in a queue written to disk, so that a restart does not cost you messages
+your phone had not collected yet.</li>
+<li><strong>Messages you send</strong> — also kept for 7 days, so that WhatsApp can ask
+for one again if a recipient's phone failed to decrypt it. This is a WhatsApp
+mechanism; without it such a message is lost without any sign.</li>
+<li><strong>Calls</strong> — voice and video calls are carried through the relay. Calls
+are <strong>not recorded</strong>. For 7 days the relay keeps technical diagnostics of
+each call: its identifiers, the WhatsApp ids of the people in it, the call's
+encryption key and packet statistics. No audio and no video.</li>
+<li><strong>Your WhatsApp session</strong> — the credentials that let Zapchat act as
+your companion device, and what WhatsApp sends a linked device about your account:
+your contacts' names and numbers, your groups and their members, and your chat
+settings.</li>
+<li><strong>Numbers you look up</strong> — when you type or pick a phone number to
+start a chat, that number is sent to the relay to find its WhatsApp account. Your
+address book is read on your phone only, to show names, and is never uploaded.</li>
+<li><strong>Your device's push token</strong>, so the relay can notify your
+phone.</li>
+<li><strong>Server logs</strong> — the relay's log records what it does, and during the
+current testing period it is not filtered: it can contain chat names, contact names,
+phone numbers and WhatsApp ids, and parts of messages. It is kept for
+<strong>21 days</strong> and read only to diagnose problems.</li>
+<li><strong>Problem reports</strong> — when you use Settings → Report a Problem, the
+report carries what you write, your app and iOS version, your device model and a recent
+diagnostic log from the app. That log may include chat names and parts of messages.
+Kept for <strong>30 days</strong>.</li>
+<li><strong>Emails</strong> you send to support@tag.org.</li>
 </ul>
+<p>Message content can reveal sensitive things — health, religion, beliefs, sexual
+life. Zapchat does not look for them, sort by them or use them for anything; they pass
+through like any other content, under the limits above.</p>
 
 <h2>Notifications</h2>
-<p>When a message arrives, the notification carries <strong>the sender's name and the
-message text</strong> so that you can read it without opening the app. That means both
-pass through Apple's push service on the way to your device. Phone numbers and
-WhatsApp identifiers do not.</p>
-<p>This changed in August 2026. Notifications used to carry only an identifier, and
-your device fetched the text itself — which is better for privacy and only works when
-iOS lets the app run. On a phone with Background App Refresh off, or in Low Power
-Mode, it did not, and the notification said nothing but &ldquo;New message&rdquo;. We
-chose the notification you can read.</p>
+<p>When a message arrives, the notification carries <strong>the sender's name, the chat
+or group name, and the message text</strong> so that you can read it without opening
+the app. A notification for an incoming call carries <strong>the caller's phone
+number</strong>. All of that passes through Apple's push service on the way to your
+device.</p>
 <p>A muted or archived chat is the exception: its notification carries no text at all,
 because it is not meant to interrupt you.</p>
+
+<h2>Who else handles it</h2>
+<ul>
+<li><strong>WhatsApp (Meta)</strong> — your messages and calls travel over WhatsApp, under
+WhatsApp's own terms and privacy policy. WhatsApp decides for itself what it does with
+your account; TAG does not share anything with it beyond what a linked device
+must.</li>
+<li><strong>Dedicated.com</strong> — hosts the relay server, in New York.</li>
+<li><strong>Cloudflare</strong> — carries the connection between the app and the relay,
+and serves this website. The encrypted connection ends at Cloudflare's network before it
+reaches the relay, so Cloudflare's systems handle that traffic, message content
+included, in transit.</li>
+<li><strong>Apple</strong> — delivers notifications (see above).</li>
+<li><strong>Microsoft</strong> — hosts the support@tag.org mailbox.</li>
+</ul>
+<p>TAG discloses data to authorities only where the law compels it.</p>
+
+<h2>Where it is processed</h2>
+<p>The relay and its data are in the United States. If you are in the European Union,
+the United Kingdom or another country with transfer rules, your data is processed there
+[TRANSFER SAFEGUARD: the mechanism relied on, once in place].</p>
+
+<h2>Why, and on what basis</h2>
+<ul>
+<li><strong>To provide the service you asked for</strong> — relaying your messages and
+calls, notifications, contact lookups: because it is necessary to provide Zapchat to
+you.</li>
+<li><strong>Other people's messages to you</strong>, the server logs, call diagnostics,
+problem reports and backups: TAG's legitimate interest in delivering what was sent to
+you, keeping the service working and secure, and fixing what breaks — limited to the
+retention below.</li>
+<li><strong>Problem reports</strong>: you choose to send one.</li>
+</ul>
+<p>Zapchat makes no automated decisions about you and builds no profile of you.</p>
+
+<h2>How long</h2>
+<table>
+<tr><td>Messages, once your device has them</td><td>12 hours</td></tr>
+<tr><td>Messages your device never collects</td><td>7 days</td></tr>
+<tr><td>Messages you send (WhatsApp resend)</td><td>7 days</td></tr>
+<tr><td>Call diagnostics</td><td>7 days</td></tr>
+<tr><td>Server logs</td><td>21 days</td></tr>
+<tr><td>Problem reports</td><td>30 days</td></tr>
+<tr><td>Your WhatsApp session, contacts and groups</td><td>until you unlink Zapchat</td></tr>
+<tr><td>Nightly backups of sessions and settings (no message content)</td><td>14 days</td></tr>
+</table>
+<p>A restart does not extend any of these. Unlinking Zapchat — from WhatsApp's Linked
+Devices screen on your phone, or by asking us — ends TAG's access at once; the session
+data, your contacts and groups, and any messages still queued for you are deleted within
+a day, and leave the backups within 14 days.</p>
+
+<h2>Your rights</h2>
+<p>You can ask for a copy of your data, its correction or deletion, to restrict or
+object to its processing, and to take it elsewhere. Write to
+<a href="mailto:support@tag.org">support@tag.org</a> from any address and tell us the
+phone number of your linked account; to confirm it is you, we will ask you to send a
+code from that WhatsApp account. We answer within one month.</p>
+<p>If you are unhappy with how we handled your data, tell us first and we will reply
+within 30 days. You can also complain to the data protection authority where you live —
+in the UK, the Information Commissioner's Office (ico.org.uk).</p>
+
+<h2>Other people</h2>
+<p>Messages you receive were written by people who did not choose Zapchat. Their
+content, names and numbers pass through the same relay under the same terms and limits
+described here, and they have the same rights: anyone can write to support@tag.org.</p>
+
+<h2>Security</h2>
+<p>The app reaches the relay only over encrypted connections, the relay has no port
+open to the internet, and its data is accessible only to TAG's operators. Message
+content is decrypted on the relay, as described above.</p>
 
 <h2>What we do not do</h2>
 <ul>
 <li>No advertising, and no sale or sharing of your data with advertisers.</li>
-<li>No analytics SDKs, no third-party trackers, no crash reporters that carry content.</li>
-<li>No message content in server logs. Logs record counts, timings and opaque
-identifiers only.</li>
+<li>No analytics SDKs, no third-party trackers, no crash reporters that carry
+content.</li>
 <li>No use of your messages to train machine-learning models.</li>
 </ul>
 
-<h2>Retention and deletion</h2>
-<p>Message content is discarded continuously — by age, by volume, and as soon as your
-device has collected it. The outside bound is <strong>12 hours</strong> for anything
-your device has confirmed receiving, and <strong>7 days</strong> for anything it has
-not. Those two limits are the whole answer to how long TAG can hold your content, and
-a restart does not extend either one. Your session credentials persist until you unlink
-Zapchat, either from WhatsApp's Linked Devices screen on your phone or by asking us to
-delete your session. Unlinking ends TAG's access; deleting the session removes the
-stored credentials.</p>
-
-<h2>Other people</h2>
-<p>Messages you receive were written by other people who did not choose Zapchat. Their
-content passes through the same relay under the same terms described here.</p>
-
 <h2>Children</h2>
 <p>Zapchat is not directed at children and requires an existing WhatsApp account, which
-WhatsApp itself age-restricts.</p>
+WhatsApp itself age-restricts. If we learn that a child under 13 is using it, we delete
+that session.</p>
 
 <h2>Not affiliated with WhatsApp</h2>
 <p>Zapchat is an independent client. It is not made by, endorsed by, or affiliated with
 WhatsApp LLC or Meta. Your use of WhatsApp remains governed by WhatsApp's own terms and
 privacy policy.</p>
 
+<h2>Changes</h2>
+<p>When this policy changes, the date above changes.</p>
+
 <h2>Contact</h2>
-<p>Questions, or to have your session deleted:
-<a href="mailto:support@tag.org">support@tag.org</a>.</p>
+<p><a href="mailto:support@tag.org">support@tag.org</a>.</p>
 
 <nav><a href="index.html">Zapchat</a> &nbsp;·&nbsp; <a href="support.html">Support</a></nav>
 </div>
